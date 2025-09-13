@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Vizualizacije</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Raleway', sans-serif; color:#222; }
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top:0;
+  width:100%;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  z-index:1000;
+}
+
+.navbar .logo img {
+  height:50px;
+  width:50px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #111;
+}
+
+.nav-links {
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+.nav-links li a {
+  text-decoration:none;
+  color:#111;
+  font-weight:500;
+  position:relative;
+}
+
+.nav-links li a::after {
+  content:"";
+  position:absolute;
+  bottom:-3px;
+  left:0;
+  width:0%;
+  height:2px;
+  background:#111;
+  transition:0.3s;
+}
+
+.nav-links li a:hover::after {
+  width:100%;
+}
+
+/* Hamburger dugme */
+.hamburger {
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span {
+  display:block;
+  width:25px;
+  height:3px;
+  background:#111;
+  border-radius:2px;
+  transition: all 0.3s ease;
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+  .nav-links {
+    position: fixed;
+    top:65px;
+    right:0;
+    background:#fff;
+    flex-direction:column;
+    gap:15px;
+    width:200px;
+    padding:20px;
+    border-left:1px solid #ddd;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+
+  .hamburger { display:flex; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">
+    <img src="vizijalogo.jpg" alt="Logo">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Početna</a></li>
+    <li><a href="#rooms">Usluge</a></li>
+    <li><a href="#proces">Proces</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<section style="height:100vh; display:flex; justify-content:center; align-items:center; background:#f0f0f0;">
+  <h1>Dobrodošli!</h1>
+</section>
+
+<section id="rooms" style="height:100vh; background:#fafafa; display:flex; justify-content:center; align-items:center;">
+  <h2>Usluge</h2>
+</section>
+
+<section id="proces" style="height:100vh; background:#e0e0e0; display:flex; justify-content:center; align-items:center;">
+  <h2>Proces</h2>
+</section>
+
+<section id="kontakt" style="height:100vh; background:#d0d0d0; display:flex; justify-content:center; align-items:center;">
+  <h2>Kontakt</h2>
+</section>
+
+<script>
+// Toggle mobilni meni
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+// Zatvori meni kada klikneš link
+document.querySelectorAll('.nav-links li a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
+</script>
+
+</body>
+</html>
